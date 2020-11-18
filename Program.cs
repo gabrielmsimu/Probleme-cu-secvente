@@ -16,6 +16,161 @@ namespace Probleme_cu_secvente
             //Problema_4();
             //Problema_5();
             //Problema_6();
+            //Problema_7();
+            //Problema_8();
+            //Problema_9(); 
+            //Problema_10();
+            
+
+        }
+
+
+        /// <summary>
+        /// Se da o secventa de n numere. Care este numarul maxim de numere consecutive egale din secventa. 
+        /// </summary>
+        private static void Problema_10()
+        {
+            Console.WriteLine("Introduceti numarul n");
+            int n = int.Parse(Console.ReadLine());
+            int numar = 0, max = 0, contor = 1, previous_number; //variabila contor va tine cont de cate numere egale sunt consecutive intr-o serie de numere egale consecutive.
+
+            for (int i = 1; i <= n; i++)
+            {
+                previous_number = numar; 
+                Console.WriteLine($"Introduceti numarul {i}");
+                numar = int.Parse(Console.ReadLine());
+                if (previous_number == numar && i > 1) //daca numarul de dinainte este egal cu numarul actual SI nu suntem la prima repetare.
+                
+                    contor++;
+                
+                else
+                
+                    contor = 1; // oricand se gasesc doua numere care nu sunt egale si consecutive, contorul trece la 1.
+                
+                if (max < contor)
+                
+                    max = contor;
+            }
+
+            if (max == 1)
+            {
+                Console.WriteLine("NU exista numere consecutive egale in secventa.");
+            }
+            else
+            {
+                Console.WriteLine($"Exista maxim {max} numere consecutive egale in secventa.");
+            }
+
+        }
+
+
+
+
+
+        /// <summary>
+        /// Sa se determine daca o secventa de n numere este monotona. 
+        /// Secventa monotona = secventa monoton crescatoare sau monoton descrescatoare. 
+        /// </summary>
+        private static void Problema_9()
+        {
+            Console.WriteLine("Introduceti numarul n");
+            int n = int.Parse(Console.ReadLine());
+            int numar = 0, previous_number;
+            bool monotona = true;
+            int monotonie_curenta = -2, monotonie_trecuta;
+
+
+            for (int i = 1; i <= n; i++)
+            {
+                monotonie_trecuta = monotonie_curenta;
+                previous_number = numar;
+                Console.WriteLine($"Introduceti numarul {i}");
+                numar = int.Parse(Console.ReadLine());
+
+                if (i > 1)
+                {
+                    if (numar - previous_number >= 0)
+                    {
+                        monotonie_curenta = 1;  //1 pentru sir crescator
+                    }
+                    else
+                    {
+                        monotonie_curenta = 0;  //0 pentru sir descrescator
+                    }
+                }
+
+                if (monotonie_curenta != monotonie_trecuta && i > 2) //monotonia se poate schimba doar atunci cand avem mai mult de 2 numere in sir (deoarece oricare sir de doua numere este monoton, fie descrescator fie crescator)
+                {
+                    monotona = false;
+                }
+            }
+            if (monotona == true)
+            {
+                Console.WriteLine("Secventa este monotona. ");
+            }
+            else
+            {
+                Console.WriteLine("Secventa NU este monotona. ");
+            }
+
+        }
+
+
+
+        /// <summary>
+        /// Determianti al n-lea numar din sirul lui Fibonacci. 
+        /// Sirul lui Fibonacci se construieste astfel: f1 = 0, f2 = 1, f_n = f_(n-1) + f(n-2). 
+        /// Exemplu: 0, 1, 1, 2, 3, 5, 8 ...
+        /// </summary>
+        private static void Problema_8()
+        {
+            Console.WriteLine("Introduceti numarul n");
+            int n = int.Parse(Console.ReadLine());
+
+            int numar1 = 0; int numar2 = 1; int numar = 0;
+
+            for (int i = 2; i < n; i++)
+            {
+                numar = numar1 + numar2;
+                numar1 = numar2;
+                numar2 = numar;
+            }
+
+            Console.WriteLine(numar);
+
+
+        }
+
+
+
+        /// <summary>
+        /// Se da o secventa de n numere. Sa se determine cea mai mare si cea mai mica valoare din secventa.
+        /// </summary>
+        private static void Problema_7()
+        {
+            Console.WriteLine("Introduceti numarul n");
+            int n = int.Parse(Console.ReadLine());
+            int max = 0; int min = 0; int numar;
+
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine($"Introduceti numarul {i}");
+                numar = int.Parse(Console.ReadLine());
+
+                if (max < numar)
+                {
+                    max = numar;
+                }
+                if (min > numar)
+                {
+                    min = numar;
+                }
+
+            }
+
+            Console.WriteLine($"Cea mai mare si cea mai mica valoare din secventa sunt {max}, respectiv {min}.");
+
+
         }
 
 
@@ -31,16 +186,11 @@ namespace Probleme_cu_secvente
 
             for (int i = 1; i <= n; i++)
             {
-
-
                 aux = numar;
                 Console.WriteLine($"Introduceti numarul {i}");
                 numar = int.Parse(Console.ReadLine());
-                if (numar < aux && numar > 0)
-                    {
-                        crescatoare = false;
-                    }
-                  
+                if (numar < aux)
+                    crescatoare = false;                 
             }
 
             if (crescatoare == false)
@@ -132,7 +282,7 @@ namespace Probleme_cu_secvente
         }
 
         /// <summary>
-        /// Se da o secventa de n numere. Sa se determina cate sunt negative, cate sunt zero si cate sunt pozitive. 
+        /// Se da o secventa de n numere. Sa se determine cate sunt negative, cate sunt zero si cate sunt pozitive. 
         /// </summary>
         private static void Problema_2()
         {
