@@ -20,9 +20,48 @@ namespace Probleme_cu_secvente
             //Problema_8();
             //Problema_9(); 
             //Problema_10();
+            //Problema_11();
+            Problema_12();
             
 
         }
+
+
+        /// <summary>
+        /// Cate grupuri de numere consecutive diferite de zero sunt intr-o secventa de n numere?
+        /// Considerati fiecare astfel de grup ca fiind un cuvant, zero fiind delimitator de cuvinte.
+        /// De ex. pentru secventa 1, 2, 0, 3, 4, 5, 0, 0, 6, 7, 0, 0 raspunsul este 3. 
+        /// </summary>
+        private static void Problema_12()
+        {
+
+            
+        }
+
+
+        /// <summary>
+        /// Se da o secventa de n numere. Se cere sa se caculeze suma inverselor acestor numere.
+        /// </summary>
+        private static void Problema_11()
+        {
+            Console.WriteLine("Introduceti numarul n");
+            int n = int.Parse(Console.ReadLine());
+            float suma = 0;
+            float numar;
+
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine($"Introduceti numaru {i}.");
+                numar = float.Parse(Console.ReadLine());
+                numar = 1 / numar;
+                suma = suma + numar;
+            }
+
+            Console.WriteLine($"Suma inverselor numerelor introduse este {suma}");
+            
+        }
+
+
 
 
         /// <summary>
